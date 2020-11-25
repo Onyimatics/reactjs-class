@@ -42,16 +42,17 @@ const books = [
 const BookList = () => {
     return (
         <section className='bookList'>{books.map((book, index) => {
-            return <Book key={book.id} book={book}></Book>
+            //spread out all the properties in the book
+            return <Book key={book.id} {...book}></Book>
         })}
         </section>
     )
 }
 
-const Book = (props) => {
-    // const Book = ({ img, title, author }) => {
+const Book = ({ img, title, author }) => {
+    // const Book = (props) => {
     // destructuring props
-    const { img, title, author } = props.book;
+    // const { img, title, author } = props;
     return (
         <article className={'book'}>
             <img
