@@ -18,33 +18,40 @@ import './index.css';
         React.createElement('h1', {}, 'Hello World'));
 }*/
 
+const books = [
+    {
+        id: 1,
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
+        title: 'I Love You to the Moon and Back',
+        author: 'Amelia Hepworth'
+    },
+    {
+        id: 2,
+        img: 'https://images-na.ssl-images-amazon.com/images/I/81GIvo3b02L._AC_UL200_SR200,200_.jpg',
+        title: 'Paint by sticker',
+        author: 'Workman Publishing'
+    },
+    {
+        id: 3,
+        img: 'https://images-na.ssl-images-amazon.com/images/I/91vtkaBWXeL._AC_UL200_SR200,200_.jpg',
+        title: 'How to Catch a Unicorn',
+        author: 'Adam Wallace'
+    }
+]
+
 const BookList = () => {
     return (
-        <section className='bookList'>
-            <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum vel quos tempore magnam cum adipisci deleniti laudantium a dignissimos?</p>
-            </Book>
-            <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>
+        <section className='bookList'>{books.map((book, index) => {
+            return <Book key={book.id} book={book}></Book>
+        })}
         </section>
     )
 }
 
-const firstBook = {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/81eB%2B7%2BCkUL._AC_UL200_SR200,200_.jpg',
-    title: 'I Love You to the Moon and Back',
-    author: 'Amelia Hepworth'
-}
-
-const secondBook = {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/81GIvo3b02L._AC_UL200_SR200,200_.jpg',
-    title: 'Paint by sticker',
-    author: 'Workman Publishing'
-}
-
-const Book = ({ img, title, author, children }) => {
-    // const Book = (props) => {
+const Book = (props) => {
+    // const Book = ({ img, title, author }) => {
     // destructuring props
-    // const { img, title, author } = props;
+    const { img, title, author } = props.book;
     return (
         <article className={'book'}>
             <img
@@ -52,7 +59,6 @@ const Book = ({ img, title, author, children }) => {
                 alt={''}/>
             <h1>{title}</h1>
             <h4>{author}</h4>
-            {children}
         </article>
     )
 }
