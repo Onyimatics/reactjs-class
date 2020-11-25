@@ -21,8 +21,10 @@ import './index.css';
 const BookList = () => {
     return (
         <section className='bookList'>
-            <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}/>
-            <Book img={secondtBook.img} title={secondtBook.title} author={secondtBook.author}/>
+            <Book img={firstBook.img} title={firstBook.title} author={firstBook.author}>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ipsum vel quos tempore magnam cum adipisci deleniti laudantium a dignissimos?</p>
+            </Book>
+            <Book img={secondBook.img} title={secondBook.title} author={secondBook.author}/>
         </section>
     )
 }
@@ -33,13 +35,13 @@ const firstBook = {
     author: 'Amelia Hepworth'
 }
 
-const secondtBook = {
+const secondBook = {
     img: 'https://images-na.ssl-images-amazon.com/images/I/81GIvo3b02L._AC_UL200_SR200,200_.jpg',
     title: 'Paint by sticker',
     author: 'Workman Publishing'
 }
 
-const Book = ({ img, title, author }) => {
+const Book = ({ img, title, author, children }) => {
     // const Book = (props) => {
     // destructuring props
     // const { img, title, author } = props;
@@ -50,6 +52,7 @@ const Book = ({ img, title, author }) => {
                 alt={''}/>
             <h1>{title}</h1>
             <h4>{author}</h4>
+            {children}
         </article>
     )
 }
